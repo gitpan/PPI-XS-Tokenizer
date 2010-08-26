@@ -1,11 +1,18 @@
+package PPI::Tokenizer;
+
+sub __dummy_func_do_not_use { 5 }
+
 package PPI::XS::Tokenizer;
 
 use 5.006002;
 use strict;
 use warnings;
 
-our $VERSION = '0.01';
-BEGIN { $PPI::Lexer::X_TOKENIZER = "PPI::XS::Tokenizer"; }
+our $VERSION = '0.02';
+BEGIN {
+  no warnings 'once';
+  $PPI::Lexer::X_TOKENIZER = "PPI::XS::Tokenizer";
+}
 our @ISA = qw{PPI::Tokenizer};
 
 use Carp ();
@@ -84,6 +91,19 @@ This package is compatible with PPI version 1.213
 The effort was seeded be the Padre - the Perl IDE project, mentored by
 Adam Kennedy, the Perl-C++ binding was done by Steffen Mueller, and the
 tokenizer itself was written by Shmuel Fomberg.
+
+=head1 Benchmark
+
+Code:
+
+  timethis( 1000, sub { PPI::Document->new(".../lib/PPI/Node.pm") } );
+
+Results:
+
+  with PPI::XS::Tokenizer
+  timethis 1000: 206 wallclock secs (203.29 usr +  0.67 sys = 203.96 CPU) @  4.90/s (n=1000)
+  Pure perl:
+  timethis 1000: 260 wallclock secs (257.66 usr +  0.28 sys = 257.94 CPU) @  3.88/s (n=1000)
 
 =head1 SEE ALSO
 
