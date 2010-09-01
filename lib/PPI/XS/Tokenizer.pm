@@ -1,18 +1,15 @@
-package PPI::Tokenizer;
-
-sub __dummy_func_do_not_use { 5 }
-
 package PPI::XS::Tokenizer;
 
 use 5.006002;
 use strict;
 use warnings;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 BEGIN {
   no warnings 'once';
   $PPI::Lexer::X_TOKENIZER = "PPI::XS::Tokenizer";
 }
+sub PPI::Tokenizer::__dummy_func_do_not_use { 5 }
 our @ISA = qw{PPI::Tokenizer};
 
 use Carp ();

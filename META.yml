@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               PPI-XS-Tokenizer
-version:            0.02
+version:            0.03
 abstract:           C++ replaction for the PPI Tokenizer
 author:
     - Shmuel Fomberg <semuelf@cpan.org>
